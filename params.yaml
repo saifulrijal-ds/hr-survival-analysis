@@ -1,0 +1,6 @@
+data_generation:
+  sample_size: 5000
+  output_dir: "data/raw"
+  output_file: "bfi_finance_hr_dataset.csv"
+  random_seed: 42
+  report_dir: "reports/data_generation"

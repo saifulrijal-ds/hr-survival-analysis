@@ -1,0 +1,13 @@
+stages:
+  generate_data:
+    cmd: python src/data/generate_dataset.py
+    deps:
+      - src/data/data_generator.py
+      - src/data/generate_dataset.py
+    params:
+      - data_generation
+    outs:
+      - ${data_generation.output_dir}/${data_generation.output_file}:
+          cache: true
+      - reports/data_generation/dataset_statistics.md:
+          cache: true

@@ -1,0 +1,30 @@
+schema: '2.0'
+stages:
+  generate_data:
+    cmd: python src/data/generate_dataset.py
+    deps:
+    - path: src/data/data_generator.py
+      hash: md5
+      md5: 9be0420a25c467838f6f81ffc719655f
+      size: 28121
+    - path: src/data/generate_dataset.py
+      hash: md5
+      md5: df0114995bb697bd4e8e4b12ee07918a
+      size: 3749
+    params:
+      params.yaml:
+        data_generation:
+          sample_size: 5000
+          output_dir: data/raw
+          output_file: bfi_finance_hr_dataset.csv
+          random_seed: 42
+          report_dir: reports/data_generation
+    outs:
+    - path: data/raw/bfi_finance_hr_dataset.csv
+      hash: md5
+      md5: 53d9afb4c5ff8e57e97ca25df8100164
+      size: 1052544
+    - path: reports/data_generation/dataset_statistics.md
+      hash: md5
+      md5: d9bd31d26625997416932c6650b52979
+      size: 947

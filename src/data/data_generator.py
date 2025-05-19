@@ -679,7 +679,7 @@ def generate_hr_dataset(n=TOTAL_EMPLOYEES):
     # Format date columns as strings
     df['HireDate'] = df['HireDate'].dt.strftime('%Y-%m-%d')
     df['TerminationDate'] = df['TerminationDate'].apply(
-        lambda x: x.strftime('%Y-%m-%d') if x is not None else None
+        lambda x: x.strftime('%Y-%m-%d') if pd.notna(x) else None
     )
     
     print("Dataset generation complete!")
@@ -731,21 +731,7 @@ def print_dataset_stats(df):
         if reason is not None:
             print(f"  {reason}: {count} ({count/former_employees*100:.1f}% of departures)")
 
-# Generate the dataset
 if __name__ == "__main__":
-    # Set the sample size
-    sample_size = TOTAL_EMPLOYEES
-    
-    # Generate the dataset
-    hr_data = generate_hr_dataset(sample_size)
-    
-    # Print summary statistics
-    print_dataset_stats(hr_data)
-    
-    # Save to CSV
-    output_file = "bfi_finance_hr_dataset.csv"
-    hr_data.to_csv(output_file, index=False)
-    print(f"\nDataset saved to {output_file}")
-    
-    print("\nSample data (first 5 rows):")
-    print(hr_data.head())
+    print("This module provides functions for HR data generation.")
+    print("It should be run through the DVC pipeline using:")
+    print("    dvc repro")
